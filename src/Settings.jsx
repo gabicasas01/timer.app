@@ -21,7 +21,7 @@ const Settings = ({ setTime, setRepeat, onClose }) => {
   };
 
   return (
-    <div className="fixed z-50 top-0 left-0 w-full h-full bg-[#0A192F] flex items-center justify-center">
+    <div className="fixed z-50 top-0 left-0 w-full h-full bg-[#1a345c] flex items-center justify-center">
       <div className="bg-white rounded-md shadow-md p-4">
         <h2 className="text-lg font-semibold mb-4">Opciones</h2>
         <div className="flex items-center mb-4">

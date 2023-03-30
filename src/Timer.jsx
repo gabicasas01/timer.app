@@ -45,7 +45,7 @@ const Timer = () => {
   return (
     <>
       {!settingState ? (
-        <div className="flex flex-col items-center justify-center h-screen bg-[#0A192F]">
+        <div className="flex flex-col items-center justify-center h-screen bg-[#1a345c]">
             <div className="flex flex-col items-center justify-center">
               <CircularProgressbar
                 value={seconds}
@@ -87,7 +87,7 @@ const Timer = () => {
             </button>
           </div>
           <button
-            className="w-36 bg-gray-700  px-4 py-2 text-white font-medium rounded-full focus:outline-none absolute bottom-10 md:bottom-30 left-1/2 transform -translate-x-1/2"
+            className="w-36 bg-gray-600  px-4 py-2 text-white font-medium rounded-full focus:outline-none absolute bottom-10 md:bottom-30 left-1/2 transform -translate-x-1/2"
               onClick={onCloseSetting}
             >
               Opciones
