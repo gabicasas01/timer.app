@@ -87,7 +87,7 @@ const Timer = () => {
             </button>
           </div>
           <button
-            className="w-36 bg-gray-700  px-4 py-2 text-white font-medium rounded-full focus:outline-none absolute bottom-40 left-1/2 transform -translate-x-1/2"
+            className="w-36 bg-gray-700  px-4 py-2 text-white font-medium rounded-full focus:outline-none absolute bottom-10 md:bottom-30 left-1/2 transform -translate-x-1/2"
               onClick={onCloseSetting}
             >
               Opciones
