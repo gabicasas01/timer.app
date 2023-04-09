@@ -28,7 +28,7 @@ const Timer = () => {
     }
 
     return () => clearInterval(intervalId);
-  }, [isActive, seconds]);
+  }, [isActive, seconds, laps]);
 
   const onCloseSetting = () => {
     setSettingState(!settingState)
@@ -81,7 +81,7 @@ const Timer = () => {
               ) : null}
               {
                 nextTurn ? (
-                <p className="mt-2 text-lg text-gray-100">Saltar turno: Activo</p>
+                <p className="mt-2 text-lg text-gray-100">Saltar: Activo</p>
                 ) : null
               }
             </div>
@@ -106,7 +106,7 @@ const Timer = () => {
             </button>
           </div>
           <button
-            className="w-36 bg-gray-600  px-4 py-2 text-white font-medium rounded-full focus:outline-none absolute bottom-10 md:bottom-30 left-1/2 transform -translate-x-1/2"
+            className="w-36 bg-gray-600  px-4 py-2 text-white font-medium rounded-full focus:outline-none absolute bottom-4 md:bottom-30 left-1/2 transform -translate-x-1/2"
               onClick={onCloseSetting}
             >
               Opciones
