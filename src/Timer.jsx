@@ -51,7 +51,7 @@ const Timer = () => {
       if(nextTurn) {
         setSeconds(initialSeconds)
       }
-      if(repeat) {
+      if(repeat && isActive) {
         setLaps(laps + 1)
       }
   }
