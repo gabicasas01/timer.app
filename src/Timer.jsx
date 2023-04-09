@@ -10,6 +10,7 @@ const Timer = () => {
   const [initialSeconds, setInitialSeconds] = useState(25);
   const [isActive, setIsActive] = useState(false);
   const [repeat, setRepeat] = useState(false);
+  const [nextTurn, setNextTurn] = useState(false);
   const [laps, setLaps] = useState(0)
 
   useEffect(() => {
@@ -42,11 +43,24 @@ const Timer = () => {
     setInitialSeconds(s)
   }
 
+  const handleNextTurn = (n) => {
+      setNextTurn(n)
+  }
+
+  const handleClickNextTurn = () => {
+      if(nextTurn) {
+        setSeconds(initialSeconds)
+      }
+      if(repeat) {
+        setLaps(laps + 1)
+      }
+  }
+
   return (
     <>
       {!settingState ? (
-        <div className="flex flex-col items-center justify-center h-screen bg-[#1a345c]">
-            <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center h-screen bg-[#1a345c] select-none">
+            <div className="flex flex-col items-center justify-center cursor-pointer" onClick={handleClickNextTurn}>
               <CircularProgressbar
                 value={seconds}
                 maxValue={initialSeconds}
@@ -65,6 +79,11 @@ const Timer = () => {
               {repeat ? (
                 <p className="mt-4 text-lg text-gray-100">Vueltas: {laps}</p>
               ) : null}
+              {
+                nextTurn ? (
+                <p className="mt-2 text-lg text-gray-100">Saltar turno: Activo</p>
+                ) : null
+              }
             </div>
           <div className="flex mt-8">
             <button
@@ -94,7 +113,7 @@ const Timer = () => {
             </button>
         </div>
       ) :
-      <Settings setTime={handleSeconds} onClose={onCloseSetting} setRepeat={handleRepeat} />
+      <Settings setTime={handleSeconds} onClose={onCloseSetting} setRepeat={handleRepeat} setNextTurn={handleNextTurn} />
     }
     </>
   );

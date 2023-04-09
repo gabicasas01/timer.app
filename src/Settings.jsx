@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import Toggle from 'react-toggle';
 import 'react-toggle/style.css';
 
-const Settings = ({ setTime, setRepeat, onClose }) => {
+const Settings = ({ setTime, setRepeat, setNextTurn, onClose }) => {
   const [timeInput, setTimeInput] = useState(25);
   const [repeatInput, setRepeatInput] = useState(false);
+  const [ nextTurnInput, setNextTurnInput ] = useState(false)
 
   const handleTimeChange = (e) => {
     setTimeInput(e.target.value);
@@ -14,14 +15,19 @@ const Settings = ({ setTime, setRepeat, onClose }) => {
     setRepeatInput(e.target.checked);
   };
 
+  const handleNextTurn = (e) => {
+    setNextTurnInput(e.target.checked);
+  };
+
   const handleSave = () => {
     setTime(timeInput);
     setRepeat(repeatInput);
+    setNextTurn(nextTurnInput)
     onClose();
   };
 
   return (
-    <div className="fixed z-50 top-0 left-0 w-full h-full bg-[#1a345c] flex items-center justify-center">
+    <div className="fixed z-50 top-0 left-0 w-full h-full bg-[#1a345c] flex items-center justify-center select-none">
       <div className="bg-white rounded-md shadow-md p-4">
         <h2 className="text-lg font-semibold mb-4">Opciones</h2>
         <div className="flex items-center mb-4">
@@ -51,6 +57,23 @@ const Settings = ({ setTime, setRepeat, onClose }) => {
             {repeatInput ? 'On' : 'Off'}
           </label>
         </div>
+
+
+        <div className="flex items-center mb-4">
+          <label htmlFor="next-turn" className="mr-2">
+            Saltar turno:
+          </label>
+          <Toggle
+            id="next-turn"
+            checked={nextTurnInput}
+            onChange={handleNextTurn}
+          />
+          <label htmlFor="next-turn" className="select-none ml-2 font-medium">
+            {nextTurnInput ? 'On' : 'Off'}
+          </label>
+        </div>
+
+
 
         <div className="flex justify-center gap-1 mt-10">
           <button
