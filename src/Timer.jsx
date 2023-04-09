@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { CircularProgressbar } from 'react-circular-progressbar';
+import { BsArrowRepeat, BsFillSkipForwardFill } from "react-icons/bs";
 import 'react-circular-progressbar/dist/styles.css';
 import Settings from './Settings'
 
@@ -51,7 +52,7 @@ const Timer = () => {
       if(nextTurn) {
         setSeconds(initialSeconds)
       }
-      if(repeat && isActive) {
+      if(repeat && nextTurn && isActive) {
         setLaps(laps + 1)
       }
   }
@@ -59,7 +60,7 @@ const Timer = () => {
   return (
     <>
       {!settingState ? (
-        <div className="flex flex-col items-center justify-center h-screen bg-[#1a345c] select-none">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-[#1a345c] select-none">
             <div className="flex flex-col items-center justify-center cursor-pointer" onClick={handleClickNextTurn}>
               <CircularProgressbar
                 value={seconds}
@@ -76,15 +77,19 @@ const Timer = () => {
                   },
                 }}
               />
-              {repeat ? (
-                <p className="mt-4 text-lg text-gray-100">Vueltas: {laps}</p>
-              ) : null}
-              {
-                nextTurn ? (
-                <p className="mt-2 text-lg text-gray-100">Saltar: Activo</p>
-                ) : null
-              }
+          </div>
+
+
+          {repeat || nextTurn ? (
+            <div className="pt-6 flex flex-row gap-4">
+              {repeat && <BsArrowRepeat className="text-gray-200 text-3xl"/>}
+              {repeat && <p className="text-gray-200 text-3xl">{laps}</p>}
+              {nextTurn && <BsFillSkipForwardFill className="text-gray-200 text-3xl"/>}
             </div>
+          ) : null}
+
+
+
           <div className="flex mt-8">
             <button
               className={`w-24 px-4 py-2 rounded-full ${
@@ -106,7 +111,7 @@ const Timer = () => {
             </button>
           </div>
           <button
-            className="w-36 bg-gray-600  px-4 py-2 text-white font-medium rounded-full focus:outline-none absolute bottom-4 md:bottom-30 left-1/2 transform -translate-x-1/2"
+            className="w-36 bg-gray-600  px-4 py-2 text-white font-medium rounded-full focus:outline-none absolute bottom-6 md:bottom-30 left-1/2 transform -translate-x-1/2"
               onClick={onCloseSetting}
             >
               Opciones
